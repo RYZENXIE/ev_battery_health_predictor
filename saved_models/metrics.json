@@ -1,0 +1,32 @@
+{
+    "soh_model": {
+        "r2_score": 0.9858,
+        "rmse": 0.8,
+        "mae": 0.634,
+        "algorithm": "GradientBoostingRegressor (180 trees, depth 4)"
+    },
+    "range_model": {
+        "r2_score": 0.9887,
+        "rmse": 9.6542,
+        "mae": 7.2591,
+        "algorithm": "GradientBoostingRegressor (220 trees, depth 5)",
+        "feature_importance": {
+            "nominal_capacity_kwh": 0.4996320287633659,
+            "avg_speed_kmh": 0.16584503100704906,
+            "ambient_temp_c": 0.11220866062888468,
+            "driving_style_Eco": 0.07024386553994746,
+            "soh_pct": 0.05974085782343311,
+            "driving_style_Moderate": 0.03865553359476264,
+            "elevation_gain_m": 0.03537650711807712,
+            "payload_kg": 0.010245730683910513,
+            "hvac_level": 0.004819452799960109,
+            "internal_resistance_mohm": 0.0020776164840575102,
+            "tire_pressure_psi": 0.0011483358885384996,
+            "battery_type_NMC": 6.379668013483902e-06
+        }
+    },
+    "classifier_model": {
+        "accuracy": 0.8758,
+        "algorithm": "RandomForestClassifier (100 trees, depth 6)"
+    }
+}
