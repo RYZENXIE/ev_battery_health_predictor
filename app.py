@@ -346,25 +346,22 @@ with tab3:
     c3.metric("SOH Model R² Score", f"{metrics.get('soh_model', {}).get('r2_score', 0.978):.4f}")
 
 # ----------------- TAB 4: VIVA PREPARATION & REPORT -----------------
+# ----------------- TAB 4: SYSTEM SPECIFICATIONS & PHYSICS -----------------
 with tab4:
-    st.subheader("📖 Viva Defense & Technical Architecture Guide")
+    st.subheader("📐 System Specifications & Electrochemical Physics Formulation")
     st.markdown("""
-    Use these technical explanations to defend your project in front of professors and evaluators:
+    ### 1. Battery Degradation Mechanics (Arrhenius Aging Model)
+    State of Health (SOH) models electrochemical cell degradation across charge cycles:
+    $$\\text{SOH (\\%)} = \\frac{C_{\\text{usable}}}{C_{\\text{nominal}}} \\times 100$$
+    Cell degradation accelerates through SEI (Solid Electrolyte Interphase) growth governed by high Depth of Discharge (DoD) and DC fast charging current density. When SOH reaches $\\le 75\\%$, the pack is classified for secondary stationary storage repurposing.
 
-    ### 1. What makes this project unique compared to generic ML projects?
-    - **Physical Grounding:** Most regression projects ignore physics. This project couples **Arrhenius chemical degradation rates** (SEI film formation in Li-ion cells) with **Vehicle Longitudinal Dynamics** ($F_{\\text{aero}} = \\frac{1}{2} \\rho C_d A v^2$).
-    - **Dual Regression + Classification Pipeline:** It simultaneously predicts continuous Battery Health (SOH %), continuous dynamic range (km), and categorizes maintenance status.
-    - **Explainable AI (XAI):** Uses feature attribution to diagnose *why* a vehicle's range drops under winter or aggressive highway conditions.
+    ### 2. Vehicle Longitudinal Dynamics & Range Modeling
+    Driving energy consumption per unit distance ($E_{\\text{km}}$) is calculated using aerodynamic drag and rolling resistance:
+    $$F_{\\text{total}} = F_{\\text{aero}} + F_{\\text{roll}} + F_{\\text{gradient}} = \\frac{1}{2} \\rho C_d A v^2 + m g C_{rr} + m g \\sin(\\theta)$$
+    - **Aerodynamic Drag:** Scales quadratically ($v^2$) with velocity, causing rapid highway range attenuation.
+    - **Thermal Cabin Load:** High-voltage PTC cabin heaters draw 2–5 kW in sub-zero ambient temperatures.
 
-    ### 2. What is State of Health (SOH)?
-    $$\\text{SOH (\\%)} = \\frac{C_{\\text{current}}}{C_{\\text{nominal}}} \\times 100$$
-    When SOH drops below **75-80%**, the battery is considered degraded for primary automotive traction and qualifies for secondary grid-storage repurposing.
-
-    ### 3. Which algorithms are used and why?
-    - **Gradient Boosting Regressor (GBM):** Handles non-linear interactions between speed, temperature, and battery internal resistance without overfitting.
-    - **Random Forest Classifier:** Robust multi-class categorizer for battery replacement alerting.
-    - **Scikit-Learn ColumnTransformer Pipelines:** Eliminates data leakage during train/test splits.
+    ### 3. Model Architecture Pipeline
+    - **Dual Gradient Boosted Trees (GBM):** Non-linear feature interactions without assumption of linear additivity.
+    - **Scikit-Learn ColumnTransformer:** Type-specific pipeline encoders preventing train-test data leakage.
     """)
-
-st.markdown("---")
-st.caption("VoltSense ML Engine • Built with Python, Scikit-Learn & Streamlit")
