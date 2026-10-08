@@ -171,7 +171,7 @@ tab1, tab2, tab3, tab4 = st.tabs([
     "📊 Real-Time Diagnostic Dashboard",
     "🔬 What-If Route & Thermal Simulator",
     "🧠 Explainable AI & Feature Impact",
-    "📖 Viva & Technical Defense Guide"
+    "📐 Engineering Specifications & Math Models"
 ])
 
 # ----------------- TAB 1: DIAGNOSTIC DASHBOARD -----------------
@@ -345,7 +345,7 @@ with tab3:
     c2.metric("Mean Absolute Error (MAE)", f"{metrics.get('range_model', {}).get('mae', 4.2):.2f} km")
     c3.metric("SOH Model R² Score", f"{metrics.get('soh_model', {}).get('r2_score', 0.978):.4f}")
 
-# ----------------- TAB 4: VIVA PREPARATION & REPORT -----------------
+
 # ----------------- TAB 4: SYSTEM SPECIFICATIONS & PHYSICS -----------------
 with tab4:
     st.subheader("📐 System Specifications & Electrochemical Physics Formulation")
